@@ -901,7 +901,7 @@ function showNotification(message, type = 'info') {
         border-radius: 8px;
         color: white;
         font-weight: 600;
-        z-index: 1000;
+        z-index: 3500; /* above header (1100), cookie banner (2100), and most overlays */
         transform: translateX(100%);
         transition: transform 0.3s ease;
         ${type === 'success' ? 'background: linear-gradient(45deg, #27ae60, #2ecc71);' : ''}
