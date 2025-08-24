@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Import CSV/Excel: format and tips • GanttChart.site</title>
+  <meta name="description" content="Learn how to format CSV/Excel for importing activities into your Gantt chart." />
+  <link rel="canonical" href="https://ganttchart.site/guides/import-csv-excel-tips.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Import CSV/Excel: format and tips",
+    "description": "Learn how to format CSV/Excel for importing activities into your Gantt chart.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://ganttchart.site/guides/import-csv-excel-tips.html"
+    },
+    "author": { "@type": "Organization", "name": "GanttChart.site" },
+    "publisher": { "@type": "Organization", "name": "GanttChart.site" },
+    "datePublished": "2025-08-24",
+    "dateModified": "2025-08-24",
+    "url": "https://ganttchart.site/guides/import-csv-excel-tips.html"
+  }
+  </script>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="../index.html" class="logo">GanttChart.site</a>
+      <nav class="site-nav">
+        <a href="index.html" class="active">Guides</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <h1>Import CSV/Excel: format and tips</h1>
+    <h2>Recommended columns</h2>
+    <ul>
+      <li><code>name</code> – Activity name</li>
+      <li><code>group</code> – EPIC or workstream name</li>
+      <li><code>start</code> – Start date (YYYY-MM-DD)</li>
+      <li><code>end</code> – End date (YYYY-MM-DD)</li>
+      <li><code>status</code> – One of: Not Started, In Progress, Delayed, Blocked, Action Needed, Completed</li>
+    </ul>
+
+    <h2>Formatting tips</h2>
+    <ul>
+      <li>Dates must be valid and <code>start</code> should be on or before <code>end</code>.</li>
+      <li>Keep status values consistent with the tool’s statuses for best color mapping.</li>
+      <li>Large imports? Start small, verify, then import the full sheet.</li>
+    </ul>
+
+    <p>Next: <a href="./best-practices-milestones-dependencies.html">Milestones & dependencies</a> • <a href="./how-to-make-a-gantt-chart-in-5-minutes.html">5‑minute Gantt</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>© <span id="year"></span> GanttChart.site</div>
+      <nav>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

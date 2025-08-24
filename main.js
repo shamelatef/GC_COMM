@@ -3385,3 +3385,29 @@ function duplicateProject(index) {
     markAsChanged();
     if (typeof showNotification === 'function') showNotification(`Duplicated project as "${name}"`, 'success');
 }
+
+// Cookie consent banner logic
+(function setupCookieConsent(){
+  try {
+    const banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+    const KEY = 'cookieConsent';
+    const stored = localStorage.getItem(KEY);
+    if (stored === 'accepted' || stored === 'rejected') {
+      banner.style.display = 'none';
+      return;
+    }
+    banner.style.display = 'block';
+    const accept = document.getElementById('cookieAccept');
+    const reject = document.getElementById('cookieReject');
+    if (accept) accept.addEventListener('click', function(){
+      localStorage.setItem(KEY, 'accepted');
+      banner.style.display = 'none';
+      // TODO: After AdSense approval, dynamically load ad scripts here if needed
+    });
+    if (reject) reject.addEventListener('click', function(){
+      localStorage.setItem(KEY, 'rejected');
+      banner.style.display = 'none';
+    });
+  } catch (e) { /* no-op */ }
+})();

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About • GanttChart.site</title>
+  <meta name="description" content="Learn about GanttChart.site – a fast, free, in-browser Gantt chart maker for product and project teams." />
+  <link rel="canonical" href="https://ganttchart.site/about.html" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="logo">GanttChart.site</a>
+      <nav class="site-nav">
+        <a href="guides/index.html">Guides</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <h1>About GanttChart.site</h1>
+    <p>GanttChart.site is a lightweight, modern Gantt chart maker that runs entirely in your browser. Import CSV/Excel, manage projects, drag to reschedule, mark milestones, and export as PNG or CSV – no account required.</p>
+
+    <h2>Why we built it</h2>
+    <ul>
+      <li>Fast planning without logins or complex setups</li>
+      <li>Useful defaults, accessible UI, responsive across devices</li>
+      <li>Shareable outputs (PNG/CSV) for reports and stakeholders</li>
+    </ul>
+
+    <h2>Roadmap</h2>
+    <ul>
+      <li>Template gallery for common PM frameworks</li>
+      <li>Collaboration and versioning</li>
+      <li>More import/export formats</li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>© <span id="year"></span> GanttChart.site</div>
+      <nav>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

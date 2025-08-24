@@ -7,10 +7,29 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gantt Chart</title>
+    <title>Dynamic Gantt Chart Maker – Plan, Track, Export | GanttChart.site</title>
+    <meta name="description" content="Build beautiful Gantt charts in your browser. Create activities, milestones, import CSV/Excel, drag to schedule, and export PNG/CSV. Free and fast." />
+    <link rel="canonical" href="https://ganttchart.site/" />
+    <meta property="og:title" content="Dynamic Gantt Chart Maker" />
+    <meta property="og:description" content="Create Gantt charts, manage milestones, import/export, and share. Runs entirely in your browser." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ganttchart.site/" />
+    <meta name="twitter:card" content="summary" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="index.html" class="logo">GanttChart.site</a>
+            <nav class="site-nav">
+                <a href="guides/index.html">Guides</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+            </nav>
+        </div>
+    </header>
     <!-- Global modals mounted at body level to avoid being affected by container filters/scroll -->
     <!-- Add Milestone Modal -->
     <div class="modal-backdrop" id="addMilestoneModal" style="display:none">
@@ -261,11 +280,48 @@
 
         <div class="chart-container">
             <div class="chart" id="ganttChart">
-                <div class="no-tasks">Add Activities to see your Gantt chart</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="home-guides" aria-labelledby="popular-guides" style="padding:28px 16px; max-width:980px; margin: 0 auto;">
+        <h2 id="popular-guides" style="margin:0 0 12px 0;">Popular Guides</h2>
+        <ul style="display:grid; gap:8px; list-style:disc inside;">
+            <li><a href="guides/how-to-make-a-gantt-chart-in-5-minutes.html">How to make a Gantt chart in 5 minutes</a></li>
+            <li><a href="guides/gantt-vs-roadmap.html">Gantt vs Roadmap: when to use each</a></li>
+            <li><a href="guides/import-csv-excel-tips.html">Import CSV/Excel: format and tips</a></li>
+            <li><a href="guides/best-practices-milestones-dependencies.html">Best practices: milestones and dependencies</a></li>
+        </ul>
+    </section>
+
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <div>© <span id="siteYear"></span> GanttChart.site</div>
+            <nav>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Cookie consent banner -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent" style="display:none">
+        <div class="cookie-banner-inner">
+            <div class="cookie-text">
+                We use cookies for functionality and analytics. Ads may use cookies once enabled. See our <a href="privacy.html">Privacy Policy</a>.
+            </div>
+            <div class="cookie-actions">
+                <button class="btn btn-secondary" id="cookieReject">Reject</button>
+                <button class="btn btn-primary" id="cookieAccept">Accept</button>
             </div>
         </div>
     </div>
 
     <script src="main.js"></script>
+    <script>
+      // Footer year
+      (function(){ try { document.getElementById('siteYear').textContent = new Date().getFullYear(); } catch(_){} })();
+    </script>
 </body>
 </html>
