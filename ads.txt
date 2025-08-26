@@ -2,4 +2,4 @@
 # Replace PUB-XXXXXXXXXXXXXXXX with your AdSense publisher ID once approved
 # Format: <domain>, <publisher ID>, DIRECT, <certification authority ID>
 # Google publisher domain and cert ID per Google documentation
-google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-7694268331045252, DIRECT, f08c47fec0942fa0
