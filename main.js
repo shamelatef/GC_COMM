@@ -3386,15 +3386,46 @@ function duplicateProject(index) {
     if (typeof showNotification === 'function') showNotification(`Duplicated project as "${name}"`, 'success');
 }
 
-// Cookie consent banner logic
+// Cookie consent banner logic + Consent-gated AdSense loader (eligible pages only)
 (function setupCookieConsent(){
   try {
     const banner = document.getElementById('cookieBanner');
     if (!banner) return;
     const KEY = 'cookieConsent';
+    const ADS_FLAG = 'adsenseLoaded';
+
+    function isEligibleForAds() {
+      try {
+        const p = (location.pathname || '/').toLowerCase();
+        // Allow only homepage and guides content; block about/contact/terms/privacy
+        if (p === '/' || p.endsWith('/index.html') || p.endsWith('index.html')) return true;
+        if (p.includes('/guides/')) return true;
+        return false;
+      } catch (_) { return false; }
+    }
+
+    function loadAdSenseOnce() {
+      if (!isEligibleForAds()) return; // do not load on low-content pages
+      if (document.documentElement.dataset[ADS_FLAG] === '1') return;
+      document.documentElement.dataset[ADS_FLAG] = '1';
+      // Inject AdSense loader (Auto ads). Do NOT add on low-content pages.
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7694268331045252';
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+      // If needed, initialize array to avoid errors in some setups
+      window.adsbygoogle = window.adsbygoogle || [];
+      try { window.adsbygoogle.push({}); } catch(_) {}
+    }
+
     const stored = localStorage.getItem(KEY);
     if (stored === 'accepted' || stored === 'rejected') {
       banner.style.display = 'none';
+      if (stored === 'accepted') {
+        // Load ads only when previously accepted and eligible
+        loadAdSenseOnce();
+      }
       return;
     }
     banner.style.display = 'block';
@@ -3403,7 +3434,8 @@ function duplicateProject(index) {
     if (accept) accept.addEventListener('click', function(){
       localStorage.setItem(KEY, 'accepted');
       banner.style.display = 'none';
-      // TODO: After AdSense approval, dynamically load ad scripts here if needed
+      // After consent, load AdSense on eligible pages only
+      loadAdSenseOnce();
     });
     if (reject) reject.addEventListener('click', function(){
       localStorage.setItem(KEY, 'rejected');
