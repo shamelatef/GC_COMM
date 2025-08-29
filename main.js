@@ -1359,6 +1359,12 @@ function usDateToISO(us) {
 }
 
 window.onload = function() {
+    // Only initialize the interactive app on pages that contain the app root
+    const appRoot = document.getElementById('ganttChart');
+    if (!appRoot) {
+        return;
+    }
+
     setTodayDate();
     checkForAutoSave(); // Check for auto-saved data first
 
@@ -1812,6 +1818,7 @@ function openColorPickerForInput(inputId, titleText = 'Choose Color', anchorEl =
     currentColorModalTargetInputId = inputId;
     const m = document.getElementById('colorModal');
     const modalEl = m ? m.querySelector('.modal') : null;
+    const input = document.getElementById('colorInput');
     const title = document.getElementById('colorTitle');
     if (title) title.textContent = titleText;
     bindColorPaletteOnce();
@@ -1895,6 +1902,8 @@ function setTodayDate() {
     const today = `${yyyy}-${mm}-${dd}`;
     const startDateInput = document.getElementById('startDate');
     const endDateInput = document.getElementById('endDate');
+    // If these inputs are not present (e.g., on non-app pages), do nothing
+    if (!startDateInput || !endDateInput) return;
     
     if (!startDateInput.value) {
         startDateInput.value = today;
@@ -3387,6 +3396,7 @@ function duplicateProject(index) {
 }
 
 // Cookie consent banner logic + Consent-gated AdSense loader (eligible pages only)
+function initializeAdSystem() {
 (function setupCookieConsent(){
   try {
     const banner = document.getElementById('cookieBanner');
@@ -3443,3 +3453,4 @@ function duplicateProject(index) {
     });
   } catch (e) { /* no-op */ }
 })();
+}

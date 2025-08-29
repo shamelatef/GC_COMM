@@ -318,6 +318,12 @@
 
     <script src="main.js"></script>
     <script>
+      // Initialize AdSense and cookie consent logic only on eligible pages
+      if (typeof initializeAdSystem === 'function') {
+        initializeAdSystem();
+      }
+    </script>
+    <script>
       // Footer year
       (function(){ try { document.getElementById('siteYear').textContent = new Date().getFullYear(); } catch(_){} })();
     </script>
